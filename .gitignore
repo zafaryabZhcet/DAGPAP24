@@ -1,0 +1,7 @@
+competition.simg
+git-update.sh
+log/CGen*.log
+log/*.log
+data/*
+runOnPen.sh
+*.def
