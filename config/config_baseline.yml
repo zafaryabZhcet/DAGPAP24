@@ -10,11 +10,11 @@ environment:
   SEED: 0
   val_size: 0.2 # this is used in dagpap24_baseline.py to split train dataset 
 bert: # bert model params
-  model: allenai/scibert_scivocab_uncased # distilbert/distilbert-base-uncased
-  MAX_LENGTH: 512
+  model: roberta-base #xlnet-base-cased #FacebookAI/roberta-base #allenai/scibert_scivocab_uncased # distilbert/distilbert-base-uncased
+  MAX_LENGTH: 256
   num_train_epochs: 10
-  per_device_train_batch_size: 8
-  per_device_eval_batch_size: 8
+  per_device_train_batch_size: 16
+  per_device_eval_batch_size: 16
   save_steps: 15000
   output_dir: output_dev
   overwrite_output_dir: True

@@ -1,0 +1,26 @@
+# Core Libraries for NLP and Machine Learning
+numpy
+pandas
+scikit-learn  # This is the proper package name for sklearn
+
+# Hugging Face and NLP Specific Libraries
+transformers
+datasets
+evaluate
+sentencepiece
+huggingface-hub
+tqdm 
+
+# Parallelism and Acceleration Libraries
+accelerate
+fairscale
+deepspeed
+mpi4py
+
+# Configuration and Data Handling
+pyyaml  # This is the package name for 'yaml'
+
+# Command Line Arguments
+argparse  # Only needed if Python version < 3.2
+
+fastparquet
