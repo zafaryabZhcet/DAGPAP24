@@ -5,7 +5,7 @@
 #SBATCH --mem=100gb   
 #SBATCH --output=log/run_check_SC15b_%j.log         
 # SBATCH --gres=gpu:a100:2
-#SBATCH --gres=gpu:a30:3
+#SBATCH --gres=gpu:a30:4
 
 module load apptainer
 echo "Running Script"

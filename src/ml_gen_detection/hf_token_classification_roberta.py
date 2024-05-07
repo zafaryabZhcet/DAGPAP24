@@ -41,6 +41,7 @@ from transformers import (
     TrainingArguments,
     set_seed,
 )
+from transformers import RobertaForTokenClassification, RobertaTokenizerFast
 from transformers.trainer_utils import get_last_checkpoint, is_main_process
 from transformers.utils import check_min_version
 
@@ -393,20 +394,19 @@ def main(json_config_file_path: str = ""):
         revision=model_args.model_revision,
         use_auth_token=True if model_args.use_auth_token else None,
     )
-    tokenizer = AutoTokenizer.from_pretrained(
-        model_args.tokenizer_name
-        if model_args.tokenizer_name
-        else model_args.model_name_or_path,
-        cache_dir=model_args.cache_dir,
-        use_fast=True,
-        revision=model_args.model_revision,
-        use_auth_token=True if model_args.use_auth_token else None,
-    )
-    model = AutoModelForTokenClassification.from_pretrained(
-        model_args.model_name_or_path,
+    model = RobertaForTokenClassification.from_pretrained(
+        model_args.model_name_or_path,  # Make sure this points to 'roberta-base' or another RoBERTa model
         from_tf=bool(".ckpt" in model_args.model_name_or_path),
         config=config,
         cache_dir=model_args.cache_dir,
+        revision=model_args.model_revision,
+        use_auth_token=True if model_args.use_auth_token else None,
+    )
+
+    tokenizer = RobertaTokenizerFast.from_pretrained(
+        model_args.tokenizer_name if model_args.tokenizer_name else model_args.model_name_or_path,
+        cache_dir=model_args.cache_dir,
+        add_prefix_space=True,  # Important for RoBERTa's tokenization process
         revision=model_args.model_revision,
         use_auth_token=True if model_args.use_auth_token else None,
     )
